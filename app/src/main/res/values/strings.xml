@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">NYC Schools &amp; SAT Scores</string>
+    <string name="school_name">School Name</string>
+    <string name="no_sat_score_found">No SAT score found</string>
+</resources>
