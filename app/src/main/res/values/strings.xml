@@ -2,4 +2,9 @@
     <string name="app_name">NYC Schools &amp; SAT Scores</string>
     <string name="school_name">School Name</string>
     <string name="no_sat_score_found">No SAT score found</string>
+    <string name="num_of_test_takers">Number of Test takers :\ </string>
+    <string name="critical_thinking_avg_score">Critical thinking average score :\ </string>
+    <string name="math_avg_score">Math average score :\ </string>
+    <string name="reading_avg_score">Reading average score :\ </string>
+    <string name="loading_text">Loading...</string>
 </resources>

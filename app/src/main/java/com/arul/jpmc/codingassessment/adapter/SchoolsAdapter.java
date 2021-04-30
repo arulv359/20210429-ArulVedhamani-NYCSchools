@@ -15,8 +15,8 @@ import java.util.List;
 
 public class SchoolsAdapter extends RecyclerView.Adapter<SchoolsAdapter.SchoolsViewHolder> {
 
-    private List<HighSchool> dataList;
-    private Context context;
+    private final List<HighSchool> dataList;
+    private final Context context;
 
     public SchoolsAdapter(Context context, List<HighSchool> dataList) {
         this.context = context;

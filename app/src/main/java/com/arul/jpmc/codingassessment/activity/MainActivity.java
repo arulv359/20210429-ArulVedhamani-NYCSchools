@@ -2,18 +2,18 @@ package com.arul.jpmc.codingassessment.activity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
-import com.arul.jpmc.codingassessment.model.HighSchool;
-import com.arul.jpmc.codingassessment.network.GetDataService;
-import com.arul.jpmc.codingassessment.network.RecyclerViewClickListener;
 import com.arul.jpmc.codingassessment.R;
 import com.arul.jpmc.codingassessment.adapter.SchoolsAdapter;
+import com.arul.jpmc.codingassessment.model.HighSchool;
 import com.arul.jpmc.codingassessment.model.SATScore;
+import com.arul.jpmc.codingassessment.network.GetDataService;
+import com.arul.jpmc.codingassessment.network.RecyclerViewClickListener;
 import com.arul.jpmc.codingassessment.network.RetrofitClientInstance;
 
 import java.util.ArrayList;
@@ -25,8 +25,6 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity implements RecyclerViewClickListener {
 
-    private SchoolsAdapter schoolsAdapter;
-    private RecyclerView schoolRecyclerView;
     private List<HighSchool> highSchoolList;
     private List<SATScore> satScoreList;
 
@@ -38,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewClick
         setContentView(R.layout.activity_schools);
         highSchoolList = new ArrayList<>();
         progressDialog = new ProgressDialog(MainActivity.this);
-        progressDialog.setMessage("Loading....");
+        progressDialog.setMessage(getString(R.string.loading_text));
         progressDialog.show();
 
         /*Create handle for the RetrofitInstance interface*/
@@ -50,8 +48,8 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewClick
 
             /**
              * On successful school response
-             * @param call
-             * @param response
+             * @param call Retrofit api call
+             * @param response Response from the api
              */
             @Override
             public void onResponse(Call<List<HighSchool>> call, Response<List<HighSchool>> response) {
@@ -62,8 +60,8 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewClick
 
             /**
              * Handling when the API request fails
-             * @param call
-             * @param t
+             * @param call Retrofit api call
+             * @param t Error upon call failes
              */
             @Override
             public void onFailure(Call<List<HighSchool>> call, Throwable t) {
@@ -99,8 +97,8 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewClick
      * @param highSchoolList List of high schools
      */
     private void generateDataList(List<HighSchool> highSchoolList) {
-        schoolRecyclerView = findViewById(R.id.customRecyclerView);
-        schoolsAdapter = new SchoolsAdapter(this, highSchoolList);
+        RecyclerView schoolRecyclerView = findViewById(R.id.customRecyclerView);
+        SchoolsAdapter schoolsAdapter = new SchoolsAdapter(this, highSchoolList);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(MainActivity.this);
         schoolRecyclerView.setLayoutManager(layoutManager);
         schoolRecyclerView.setAdapter(schoolsAdapter);
@@ -117,7 +115,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewClick
     }
 
     /**
-     * Lounch another screen to show the SAT score details for the selected school
+     * Launch another screen to show the SAT score details for the selected school
      *
      * @param dbn key name to get the SAT scores for the corresponding school.
      */
